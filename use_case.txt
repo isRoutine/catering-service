@@ -1,3 +1,32 @@
 USE CASE - CATERING SERVICE
 
-UC1) Navi
+UC1) Inserimento Buffet:
+	1. L'amministratore vuole inserire un nuovo buffet
+	2. L'amministratore inserisce il suo username e la sua password. Il sistema verifica la 
+		correttezza dei dati ed autentica il poeta.
+		Il sistema mostra username dell'amministratore.
+	3. Il sistema mostra la form per l'inserimento dei dati del nuovo buffet.
+	7. L'amministratore edita i vari campi.
+	(L'amministratore ripete il passo 7 fino a quando non comunica che ha terminato)
+	8. Il sistema registra i dati e mostra i dati inseriti. 
+	9. L'amministratore puo' proseguire nell'uso del sistema.
+
+
+UC2) Modifica Buffet:
+	1. L'amministratore vuole modificare un buffet presente nel sistema.
+	2. L'amministratore inserisce il suo username e la sua password. Il sistema verifica la 
+		correttezza dei dati ed autentica il poeta.
+		Il sistema mostra username dell'amministratore.
+	3. Il sistema mostra a schermo l'elenco dei buffet attualmente disponibili
+	4. L'amministratore seleziona un buffet
+	5. Il sistema mostra i dettagli del buffet
+	6. L'amministratore e' libero di modificare ogni dettaglio del buffet
+	7. L'amministratore conferma le modifiche. Il sistema registra le modifiche  
+	8. L'amministratore puo' proseguire nell'uso del sistema.
+
+
+UC3) Visualizzazione Buffet:
+	1. Un utente generico desidera visualizzare i buffet disponibili
+	2. Il sistema mostra l'elenco dei buffet disponibili
+	3. L'utente puo' selezionarne uno e visualizzarne i dettagli
+	9. L'amministratore puo' proseguire nell'uso del sistema.
