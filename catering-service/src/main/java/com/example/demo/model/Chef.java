@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +18,6 @@ public class Chef {
 	
 	private String nationality;
 
-	private Collection<Buffet> buffet;
 
 	public Long getId() {
 		return id;
@@ -54,13 +51,6 @@ public class Chef {
 		this.nationality = nationality;
 	}
 
-	public Collection<Buffet> getBuffet() {
-		return buffet;
-	}
-
-	public void setBuffet(Collection<Buffet> buffet) {
-		this.buffet = buffet;
-	}
 	
 	
 }

@@ -15,8 +15,6 @@ public class Buffet {
 	private String name;
 	
 	private String description;
-	
-	private Chef chef;
 
 	public Long getId() {
 		return id;
@@ -42,13 +40,6 @@ public class Buffet {
 		this.description = description;
 	}
 
-	public Chef getChef() {
-		return chef;
-	}
-
-	public void setChef(Chef chef) {
-		this.chef = chef;
-	}
 	
 	
 }
