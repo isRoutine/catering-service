@@ -1,9 +1,12 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Chef {
@@ -18,6 +21,8 @@ public class Chef {
 	
 	private String nationality;
 
+	@OneToMany(mappedBy = "chef")
+	private List<Buffet> buffets;
 
 	public Long getId() {
 		return id;
@@ -49,6 +54,14 @@ public class Chef {
 
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
+	}
+
+	public List<Buffet> getBuffets() {
+		return buffets;
+	}
+
+	public void setBuffets(List<Buffet> buffets) {
+		this.buffets = buffets;
 	}
 
 	

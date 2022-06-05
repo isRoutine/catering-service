@@ -1,9 +1,14 @@
 package com.example.demo.model;
 
+import java.util.List;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+@Entity
 public class Dish {
 
 	@Id
@@ -11,6 +16,9 @@ public class Dish {
 	private Long id;
 	
 	private String description;
+	
+	@ManyToMany
+	private List<Ingredient> ingredients;
 
 	public Long getId() {
 		return id;
@@ -27,5 +35,15 @@ public class Dish {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+	
+	
 	
 }

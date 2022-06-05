@@ -12,6 +12,8 @@ public class Administrator {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private String username;
+	
 	private String email;
 
 	public Long getId() {
@@ -28,6 +30,14 @@ public class Administrator {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 }
