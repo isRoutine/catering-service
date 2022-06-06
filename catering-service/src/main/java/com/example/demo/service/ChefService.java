@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Buffet;
 import com.example.demo.model.Chef;
 import com.example.demo.repository.ChefRepository;
 
@@ -41,5 +42,16 @@ public class ChefService {
 	@Transactional
 	public void deleteById(Long id) {
 		this.chefRepository.deleteById(id);
+	}
+
+
+	public void update(Chef chef) {
+		// TODO Auto-generated method stub
+		Chef foo = this.chefRepository.findById(chef.getId()).get();
+		foo.setName(chef.getName());
+		foo.setSurname(chef.getSurname());
+		foo.setNationality(chef.getNationality());
+		this.chefRepository.save(foo);
+		
 	}
 }

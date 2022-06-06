@@ -42,5 +42,15 @@ public class BuffetService {
 	public void deleteById(Long id) {
 		this.buffetRepository.deleteById(id);
 	}
+
+
+	@Transactional
+	public void update(Buffet buffet) {
+		// TODO Auto-generated method stub
+		Buffet foo = this.buffetRepository.findById(buffet.getId()).get();
+		foo.setName(buffet.getName());
+		foo.setDescription(buffet.getDescription());
+		this.buffetRepository.save(foo);
+	}
 		
 }

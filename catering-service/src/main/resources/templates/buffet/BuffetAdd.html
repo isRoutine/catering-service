@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Catering Service - Add Buffet</title>	
+		<link rel="stylesheet" href="/style.css" />
+	</head>
+	<body>
+		<h4>Add Buffet</h4>
+		<form th:action=@{/buffet/add} method="post" th:object="${buffet}">
+			<div>Name: <input type="text" th:field="*{name}"/></div>
+			<div>Description: <input type="text" th:field="*{description}"/></div>
+			<div><button type="submit">Submit</button></div>
+		</form>
+	</body>
+</html>

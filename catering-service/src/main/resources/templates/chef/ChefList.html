@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Catering Service - Elenco chef</title>	
+		<link rel="stylesheet" href="/style.css" />
+	</head>
+	<body>
+		<h4>Elenco chef</h4>
+
+	    <div>
+			<ul>
+				<li th:each="chef : ${chefs}"> 
+					<span>
+						<a href="chefList.html" th:href = "@{'/chef/' + ${chef.id}}" th:text="${chef.name}">chef</a>			
+					</span>
+					<span><a href="chefList.html" th:href = "@{'/chef/delete/' + ${chef.id}}">Cancella</a></span>
+					<span><a href="chefList.html" th:href = "@{'/chef/edit/form/' + ${chef.id}}">Modifica</a></span>
+				</li>
+			</ul>
+		</div>
+
+	</body>
+</html>
