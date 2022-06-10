@@ -10,6 +10,8 @@
 
 		<div th:text = "${buffet.name}">Name: </div>
 		<div th:text = "${buffet.description}">Description: </div>
-
+		<div>
+			<a th:href = "@{'/dish/add/form/' + ${buffet.id}}" href="\" >Aggiungi Piatto</a>
+		</div>
 	</body>
 </html>

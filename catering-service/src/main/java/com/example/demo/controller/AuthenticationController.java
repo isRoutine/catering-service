@@ -1,14 +1,20 @@
 package com.example.demo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.model.Credentials;
+import com.example.demo.model.User;
 import com.example.demo.service.CredentialsService;
 
 @Controller
@@ -16,6 +22,33 @@ public class AuthenticationController {
 
 	@Autowired
 	private CredentialsService credentialsService;
+	
+	@RequestMapping(value="/register", method=RequestMethod.GET)
+	public String showRegisterForm(Model model) {
+		model.addAttribute("user", new User());
+		model.addAttribute("credentials", new Credentials());
+		return "auth/registerUser";
+	}
+	
+
+	@PostMapping(value= "/register")
+	public String registerUser(@Valid @ModelAttribute("user") User user,
+								BindingResult userBindingResult, 
+							   @Valid @ModelAttribute("credentials") Credentials credentials,
+							    BindingResult credentialsBindingResult,
+							    Model model) {
+		
+        // validazione user e credenziali
+        //this.userValidator.validate(user, userBindingResult);
+        //this.credentialsValidator.validate(credentials, credentialsBindingResult);
+
+		//if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
+			credentials.setUser(user);
+			credentialsService.saveCredentials(credentials);
+			return "/";
+		//}
+		//return "Authentication/registerForm";	
+	}
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)

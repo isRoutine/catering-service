@@ -26,7 +26,7 @@ public class Credentials {
 	@Size (min = 3, max = 15)
 	private String username;
 	
-	//@NotBlank
+	@NotBlank
 	@Size (min = 8, max = 255)
 	private String password;
 	
