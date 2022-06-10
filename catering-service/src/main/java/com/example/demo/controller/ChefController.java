@@ -48,7 +48,7 @@ public class ChefController {
 	@PostMapping("/add")
 	public String addchef(@ModelAttribute("chef") Chef chef, Model model) {
 		this.chefService.save(chef);
-		return "index";
+		return this.getChef(chef.getId(), model); //mostro il riepilogo dello chef inserito
 	}
 	
 	// elimina dal db un chef selezionato tramite id

@@ -11,6 +11,10 @@
 		<div th:text = "${chef.name}">Name: </div>
 		<div th:text = "${chef.surname}">Surname: </div>
 		<div th:text = "${chef.nationality}">Nationality: </div>
+		
+		<div>
+			<a th:href = @{/buffet/add/form} href="\" >Aggiungi Buffet</a>
+		</div>
 
 	</body>
 </html>

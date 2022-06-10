@@ -40,7 +40,9 @@ public class BuffetController {
 	// mostra la form per l'aggiunta di un nuovo buffet
 	@GetMapping("/add/form")
 	public String getAddForm(Model model) {
+		boolean input_user = false;
 		model.addAttribute("buffet", new Buffet());
+		model.addAttribute("input_user", input_user);
 		return BUFFET_DIR + "BuffetAdd";
 	}
 
@@ -48,7 +50,8 @@ public class BuffetController {
 	@PostMapping("/add")
 	public String addBuffet(@ModelAttribute("buffet") Buffet buffet, Model model) {
 		this.buffetService.save(buffet);
-		return "index";
+		//return "index";
+		return this.getBuffet(buffet.getId(),model);
 	}
 	
 	// elimina dal db un buffet selezionato tramite id
