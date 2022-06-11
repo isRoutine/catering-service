@@ -2,11 +2,13 @@ package com.example.demo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Dish {
@@ -19,7 +21,8 @@ public class Dish {
 	
 	private String description;
 	
-	@ManyToMany
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "dish_id")
 	private List<Ingredient> ingredients;
 
 	public Long getId() {

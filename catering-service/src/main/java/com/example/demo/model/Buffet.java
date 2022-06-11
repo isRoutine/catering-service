@@ -26,7 +26,7 @@ public class Buffet {
 	private Chef chef;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "dish_id")
+	@JoinColumn(name = "buffet_id")
 	private List<Dish> dishes;
 
 

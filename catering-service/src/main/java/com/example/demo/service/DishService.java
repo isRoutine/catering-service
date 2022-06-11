@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Dish;
+import com.example.demo.model.Ingredient;
 import com.example.demo.repository.DishRepository;
 
 @Service
@@ -51,6 +52,13 @@ public class DishService {
 //		foo.setNationality(dish.getNationality());
 //		this.dishRepository.save(foo);
 		
+	}
+
+	public void addIngredient(Ingredient ingredient, Long idDish) {
+		// TODO Auto-generated method stub
+		Dish dish = this.dishRepository.findById(idDish).get();
+		dish.getIngredients().add(ingredient);
+		this.save(dish);
 	}	
 	
 }
