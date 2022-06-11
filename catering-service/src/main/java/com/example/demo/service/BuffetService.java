@@ -54,7 +54,8 @@ public class BuffetService {
 		this.buffetRepository.save(foo);
 	}
 
-
+	
+	@Transactional
 	public void addPiatto(Dish dish, Long idBuffet) {
 		// TODO Auto-generated method stub
 		Buffet buffet = this.buffetRepository.findById(idBuffet).get();

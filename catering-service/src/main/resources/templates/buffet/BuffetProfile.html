@@ -3,15 +3,24 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Catering Service - Elenco Buffet</title>	
-		<link rel="stylesheet" href="/style.css" />
 	</head>
 	<body>
 		<h4>Dettagli Buffet</h4>
 
 		<div th:text = "${buffet.name}">Name: </div>
 		<div th:text = "${buffet.description}">Description: </div>
+		<div> Piatti del buffet...</div>
+	    <div>
+			<ul>
+				<li th:each="dish : ${buffet.dishes}"> 
+					<span>
+						<a href="/" th:href = "@{'/buffet/' + ${buffet.id}}" th:text="${dish.name}">Buffet</a>			
+					</span>
+				</li>
+			</ul>
+		</div>		
 		<div>
-			<a th:href = "@{'/dish/add/form/' + ${buffet.id}}" href="\" >Aggiungi Piatto</a>
+			<a th:href = "@{'/dish/add/form/' + ${buffet.id}}" href="/" >Aggiungi Piatto</a>
 		</div>
 	</body>
 </html>

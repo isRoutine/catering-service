@@ -50,10 +50,11 @@ public class DishController {
 
 	// aggiunge al db un nuovo dish per un relativo buffet
 	@PostMapping("/add/{idBuffet}")
-	public String adddish(@ModelAttribute("dish") Dish dish, @ModelAttribute("idBuffet") Long idBuffet, 
+	public String addDish(@ModelAttribute("dish") Dish dish, @PathVariable("idBuffet") Long idBuffet, 
 												Model model) {
 		this.buffetService.addPiatto(dish, idBuffet);
-		return "/buffet/" + idBuffet;
+		return "redirect:/buffet/" + idBuffet; // voglio ritornare alla pagina che mostra il buffet
+		// redirect mi permette di ripassare per il controller
 	}
 	
 	

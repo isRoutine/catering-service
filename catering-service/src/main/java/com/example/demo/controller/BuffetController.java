@@ -19,7 +19,7 @@ import com.example.demo.service.BuffetService;
 public class BuffetController {
 	
 	@Autowired BuffetService buffetService;
-	private static final String BUFFET_DIR = "/buffet/";
+	public static final String BUFFET_DIR = "/buffet/";
 	
 	// mostra tutti i buffet nel db
 	@GetMapping("/all")
@@ -33,7 +33,8 @@ public class BuffetController {
 	// mostra uno specifico buffet selezionato tramite id
 	@GetMapping("/{id}")
 	public String getBuffet(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("buffet", this.buffetService.findById(id));
+		Buffet buffet = this.buffetService.findById(id); 
+		model.addAttribute("buffet", buffet );
 		return BUFFET_DIR + "BuffetProfile";
 	}
 	
