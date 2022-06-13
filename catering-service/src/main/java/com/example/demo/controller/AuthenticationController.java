@@ -46,7 +46,7 @@ public class AuthenticationController {
 		//if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 			credentials.setUser(user);
 			credentialsService.saveCredentials(credentials);
-			return "/";
+			return "index";
 		//}
 		//return "Authentication/registerForm";	
 	}
