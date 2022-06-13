@@ -29,13 +29,13 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter{
 			//authorization paragraph: qui definiamo chi puo accedere a cosa
 			.authorizeRequests()
 			//chiunque (autenticato o no) puo' accedere alle pagine index, login, register, ai css e alle immagini
-			.antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/","/img/**" ,"/index", "/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
 			//chiunque (autenticato o no) puo' mandare richieste POST al punto di accesso
 			.antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
 			//solo gli utenti autenticati con ruolo admin possono accedere a risorse con path /admin/**
 			.antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 			.antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
-			.anyRequest().authenticated() // se io tolgo questo , non serve l'autenticazione per tutto il resto
+			//.anyRequest().authenticated() // se io tolgo questo , non serve l'autenticazione per tutto il resto
 		
 			//login paragraph: qui definiamo come è gestita l'autenticazione
 			//usiamo il protocollo formlogin
