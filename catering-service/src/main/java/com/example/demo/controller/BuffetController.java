@@ -34,7 +34,7 @@ public class BuffetController {
 	@GetMapping("/{id}")
 	public String getBuffet(@PathVariable("id") Long id, Model model) {
 		Buffet buffet = this.buffetService.findById(id); 
-		model.addAttribute("buffet", buffet );
+		model.addAttribute("buffet", buffet);
 		model.addAttribute("dishes", buffet.getDishes());
 		return BUFFET_DIR + "BuffetProfile";
 	}

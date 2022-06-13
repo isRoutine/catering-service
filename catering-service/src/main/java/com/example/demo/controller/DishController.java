@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.model.Buffet;
 import com.example.demo.model.Dish;
 import com.example.demo.service.BuffetService;
 import com.example.demo.service.DishService;
@@ -27,8 +28,8 @@ public class DishController {
 
 	@GetMapping("/all")
 	public String getDishList(Model model) {
-		List<Dish> dishs = dishService.findAll();
-		model.addAttribute("dishs",dishs);
+		List<Dish> dishes = dishService.findAll();
+		model.addAttribute("dishes",dishes);
 		return DISH_DIR + "DishList.html";
 	}	
 	
@@ -59,27 +60,31 @@ public class DishController {
 	
 	
 	// elimina dal db un dish selezionato tramite id
-	@GetMapping("/delete/{id}")
-	public String deleteDish(@PathVariable("id") Long id,Model model) {
+	@GetMapping("/delete/{id}/{idBuffet}")
+	public String deleteDish(@PathVariable("id") Long id, @PathVariable("idBuffet") Long idBuffet,
+											Model model) {
 		this.dishService.deleteById(id);
-		model.addAttribute("dishs", this.dishService.findAll());
-		return DISH_DIR + "DishList.html";
+		model.addAttribute("dishes", this.dishService.findAll());
+		return "redirect:/buffet/" + idBuffet; //ritorno alla pagine del buffet in cui ero
 	}
 	
 	// mostra la form per l'edit di un dish selezionato tramite id
-	@GetMapping("/edit/form/{id}")
-	public String getEditForm(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/edit/{id}/{idBuffet}")
+	public String getEditForm(@PathVariable("id") Long id, @PathVariable("idBuffet") Long idBuffet
+														,Model model) {
 		model.addAttribute("dish", this.dishService.findById(id));
+		model.addAttribute("idBuffet", idBuffet);
 		return DISH_DIR + "DishEdit";
 	}
 	
 	
 	// edita un dish nel db
-	@PostMapping("/edit/{id}")
-	public String editDish(@ModelAttribute("dish") Dish dish, Model model) {
+	@PostMapping("/edit/{id}/{idBuffet}")
+	public String editDish(@ModelAttribute("dish") Dish dish,@PathVariable("idBuffet") Long idBuffet,
+											Model model) {
 		this.dishService.update(dish);
-		model.addAttribute("dishs", this.dishService.findAll());
-		return DISH_DIR + "DishList";
+		model.addAttribute("dishes", this.dishService.findAll());
+		return "redirect:/buffet/" + idBuffet;
 	}
 	
 }

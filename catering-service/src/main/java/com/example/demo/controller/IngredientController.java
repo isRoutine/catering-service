@@ -43,19 +43,21 @@ public class IngredientController {
 
 	
 	// mostra la form per l'aggiunta di un nuovo ingredient per un relativo dish
-	@GetMapping("/add/form/{idDish}")
-	public String getAddForm(@PathVariable("idDish") Long idDish, Model model) {
+	@GetMapping("/add/{idDish}/{idBuffet}")
+	public String getAddForm(@PathVariable("idDish") Long idDish, @PathVariable("idBuffet") Long idBuffet
+										,Model model) {
 		model.addAttribute("ingredient", new Ingredient());
-		model.addAttribute("idDish", idDish);
+		model.addAttribute("dish", this.dishService.findById(idDish));
+		model.addAttribute("idBuffet", idBuffet);
 		return DISH_DIR + "ingredientAdd";
 	}
 
 	// aggiunge al db un nuovo ingredient per un relativo dish
-	@PostMapping("/add/{idDish}")
+	@PostMapping("/add/{idDish}/{idBuffet}")
 	public String addIngredient(@ModelAttribute("ingredient") Ingredient ingredient, @PathVariable("idDish") Long idDish, 
-												Model model) {
+												@PathVariable("idBuffet") Long idBuffet,Model model) {
 		this.dishService.addIngredient(ingredient, idDish);
-		return "redirect:/dish/" + idDish; // voglio ritornare alla pagina che mostra il dish
+		return "redirect:/buffet/" + idBuffet; // voglio ritornare alla pagina che mostra il dish
 		// redirect mi permette di ripassare per il controller
 	}
 	

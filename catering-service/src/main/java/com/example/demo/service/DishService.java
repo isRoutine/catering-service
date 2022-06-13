@@ -46,11 +46,10 @@ public class DishService {
 
 	public void update(Dish dish) {
 		// TODO Auto-generated method stub
-//		Dish foo = this.dishRepository.findById(dish.getId()).get();
-//		foo.setName(dish.getName());
-//		foo.setSurname(dish.getSurname());
-//		foo.setNationality(dish.getNationality());
-//		this.dishRepository.save(foo);
+		Dish foo = this.dishRepository.findById(dish.getId()).get();
+		foo.setName(dish.getName());
+		foo.setDescription(dish.getDescription());
+		this.dishRepository.save(foo);
 		
 	}
 
