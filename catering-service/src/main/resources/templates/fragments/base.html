@@ -26,8 +26,9 @@
 		    </ul>
 		
 		    <div class="col-md-3 text-end">
-		      <a type="button" class="btn btn-outline-primary me-2" href="/" th:href = @{/login}>Login</a>
-		      <a type="button" class="btn btn-primary" href="/" th:href = @{/register}>Sign-up</a>
+		      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-outline-primary me-2" href="/" th:href = @{/login}>Login</a>
+		      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" href="/" th:href = @{/register}>Sign-up</a>
+		      <a sec:authorize="isAuthenticated()" type="button" class="btn btn-primary" href="/" th:href = @{/logout}>Logout</a>
 		    </div>
 		  </header>
 		</div>

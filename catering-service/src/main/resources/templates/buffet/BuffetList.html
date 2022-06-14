@@ -33,7 +33,7 @@
 			    			 	</div>		    			 	
 			    			 	<div class="row d-flex align-items-center mt-3">
 				    				<div class="col-2 d-flex justify-content-center">
-				    					<img src="/img/people.png" alt="...">
+				    					<img sec:authorize="isAuthenticated()" src="/img/people.png" alt="...">
 				    				</div>				    				
 				    				<div class="col d-flex justify-content-center align-items-center">	
 											<a sec:authorize="isAuthenticated()" href="BuffetList.html" th:href = "@{'/chef/' + ${buffet.chef.id}}" 
