@@ -18,7 +18,7 @@
 		<div class="container" style="border: 2px solid red">
 		  	<div class="row d-flex justify-content-center m-3"  style="border: 2px solid red">
 				<div class="d-flex col m-2 justify-content-end">
-					<a th:href = @{/chef/add/form} href="/" class="btn btn-outline-primary">Aggiungi Chef</a>
+					<a sec:authorize="hasAuthority('ADMIN')" th:href = @{/chef/add/form} href="/" class="btn btn-outline-primary">Aggiungi Chef</a>
 				</div>
 		  	</div>
 			<div class=" d-flex row justify-content-between m-1">
@@ -29,7 +29,7 @@
 			   				 <h5 class="card-title" th:text="${chef.name}">Buffet 1</h5>
 			   				 <h5 class="card-title" th:text="${chef.surname}">Buffet 1</h5>
 			    			 <p class="card-text" th:text="${chef.nationality}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			    			<a href="ChefList.html" th:href = "@{'/chef/' + ${chef.id}}" class="btn btn-primary">
+			    			<a sec:authorize="isAuthenticated()" href="ChefList.html" th:href = "@{'/chef/' + ${chef.id}}" class="btn btn-primary">
 			    				Visualizza Dettagli
 			    			</a>
 			  			</div>

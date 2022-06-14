@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.Buffet;
 import com.example.demo.service.BuffetService;
+import com.example.demo.service.ChefService;
 
 @Controller
 @RequestMapping("/buffet")
 public class BuffetController {
 	
 	@Autowired BuffetService buffetService;
+	
+	@Autowired ChefService chefService;
+	
 	public static final String BUFFET_DIR = "/buffet/";
 	
 	// mostra tutti i buffet nel db
@@ -40,28 +44,28 @@ public class BuffetController {
 	}
 	
 	// mostra la form per l'aggiunta di un nuovo buffet
-	@GetMapping("/add/form")
-	public String getAddForm(Model model) {
-		boolean input_user = false;
+	@GetMapping("/add/{idChef}")
+	public String getAddForm(@PathVariable("idChef") Long idChef, Model model) {
 		model.addAttribute("buffet", new Buffet());
-		model.addAttribute("input_user", input_user);
+		model.addAttribute("idChef",idChef);
 		return BUFFET_DIR + "BuffetAdd";
 	}
 
 	// aggiunge al db un nuovo buffet
-	@PostMapping("/add")
-	public String addBuffet(@ModelAttribute("buffet") Buffet buffet, Model model) {
-		this.buffetService.save(buffet);
-		//return "index";
-		return this.getBuffet(buffet.getId(),model);
+	@PostMapping("/add/{idChef}")
+	public String addBuffet(@ModelAttribute("buffet") Buffet buffet, 
+							@PathVariable("idChef") Long idChef,Model model) {
+		this.chefService.addBuffet(idChef,buffet);
+		return "redirect:/chef/" + idChef;
 	}
 	
 	// elimina dal db un buffet selezionato tramite id
 	@GetMapping("/delete/{id}")
 	public String deleteBuffet(@PathVariable("id") Long id,Model model) {
+		Long idChef = this.buffetService.findById(id).getChef().getId();
 		this.buffetService.deleteById(id);
 		model.addAttribute("buffets", this.buffetService.findAll());
-		return BUFFET_DIR + "BuffetList.html";
+		return "index";
 	}
 	
 	// mostra la form per l'edit di un buffet selezionato tramite id

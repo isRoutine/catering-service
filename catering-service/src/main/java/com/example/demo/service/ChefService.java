@@ -44,7 +44,7 @@ public class ChefService {
 		this.chefRepository.deleteById(id);
 	}
 
-
+	@Transactional
 	public void update(Chef chef) {
 		// TODO Auto-generated method stub
 		Chef foo = this.chefRepository.findById(chef.getId()).get();
@@ -53,5 +53,14 @@ public class ChefService {
 		foo.setNationality(chef.getNationality());
 		this.chefRepository.save(foo);
 		
+	}
+
+	@Transactional
+	public void addBuffet(Long idChef, Buffet buffet) {
+		// TODO Auto-generated method stub
+		Chef chef = this.chefRepository.findById(idChef).get();
+		chef.getBuffets().add(buffet);
+		buffet.setChef(chef);
+		this.chefRepository.save(chef);
 	}
 }
