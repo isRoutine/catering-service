@@ -55,12 +55,12 @@ public class ChefController {
 	@GetMapping("/delete/{id}")
 	public String deleteChef(@PathVariable("id") Long id,Model model) {
 		this.chefService.deleteById(id);
-		model.addAttribute("chefs", this.chefService.findAll());
-		return CHEF_DIR + "ChefList.html";
+		//model.addAttribute("chefs", this.chefService.findAll());
+		return "redirect:/chef/all";
 	}
 	
 	// mostra la form per l'edit di un chef selezionato tramite id
-	@GetMapping("/edit/form/{id}")
+	@GetMapping("/edit/{id}")
 	public String getEditForm(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("chef", this.chefService.findById(id));
 		return CHEF_DIR + "ChefEdit";
@@ -71,8 +71,8 @@ public class ChefController {
 	@PostMapping("/edit/{id}")
 	public String editChef(@ModelAttribute("chef") Chef chef, Model model) {
 		this.chefService.update(chef);
-		model.addAttribute("chefs", this.chefService.findAll());
-		return CHEF_DIR + "ChefList";
+		//model.addAttribute("chefs", this.chefService.findAll());
+		return "redirect:/chef/all";
 	}
 	
 }

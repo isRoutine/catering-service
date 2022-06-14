@@ -23,7 +23,7 @@ public class Buffet {
 	
 	private String description;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.)
+	@ManyToOne
 	private Chef chef;
 	
 	@OneToMany(cascade = CascadeType.ALL)

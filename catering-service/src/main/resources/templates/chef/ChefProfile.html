@@ -52,7 +52,7 @@
 			    					</a>			    					
 			    			 	</div>		    			 	
 			    			 	<div class="row d-flex justify-content-center px-3 my-1">
-			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/' + ${buffet.id}}" class="btn btn-outline-success">
+			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/edit/' + ${buffet.id}}" class="btn btn-outline-success">
 			    						Modifica
 			    					</a>			    					
 			    			 	</div>	
@@ -60,9 +60,7 @@
 			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/delete/' + ${buffet.id}}" class="btn btn-outline-danger">
 			    						Elimina
 			    					</a>			    					
-			    			 	</div>				    			 	
-			    			 	
-
+			    			 	</div>				    			 
 			    			 </div>
 
 			  			</div>

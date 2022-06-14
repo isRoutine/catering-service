@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.Buffet;
+import com.example.demo.model.Chef;
 import com.example.demo.service.BuffetService;
 import com.example.demo.service.ChefService;
 
@@ -63,13 +64,13 @@ public class BuffetController {
 	@GetMapping("/delete/{id}")
 	public String deleteBuffet(@PathVariable("id") Long id,Model model) {
 		Long idChef = this.buffetService.findById(id).getChef().getId();
+		Buffet buffet = this.buffetService.findById(id);
 		this.buffetService.deleteById(id);
-		model.addAttribute("buffets", this.buffetService.findAll());
-		return "index";
+		return "redirect:/chef/" + idChef;
 	}
 	
 	// mostra la form per l'edit di un buffet selezionato tramite id
-	@GetMapping("/edit/form/{id}")
+	@GetMapping("/edit/{id}")
 	public String getEditForm(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("buffet", this.buffetService.findById(id));
 		return BUFFET_DIR + "BuffetEdit";
@@ -80,8 +81,8 @@ public class BuffetController {
 	@PostMapping("/edit/{id}")
 	public String editBuffet(@ModelAttribute("buffet") Buffet buffet, Model model) {
 		this.buffetService.update(buffet);
-		model.addAttribute("buffets", this.buffetService.findAll());
-		return BUFFET_DIR + "BuffetList";
+		//model.addAttribute("buffets", this.buffetService.findAll());
+		return "redirect:/buffet/" + buffet.getId();
 	}
 	
 }

@@ -52,7 +52,6 @@ public class ChefService {
 		foo.setSurname(chef.getSurname());
 		foo.setNationality(chef.getNationality());
 		this.chefRepository.save(foo);
-		
 	}
 
 	@Transactional

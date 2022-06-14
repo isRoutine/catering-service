@@ -23,7 +23,7 @@ public class Chef {
 	
 	private String nationality;
 
-	@OneToMany(mappedBy = "chef", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
 	private List<Buffet> buffets;
 
 	public Long getId() {
