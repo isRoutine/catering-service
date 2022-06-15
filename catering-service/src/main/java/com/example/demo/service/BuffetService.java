@@ -62,5 +62,10 @@ public class BuffetService {
 		buffet.getDishes().add(dish);
 		this.buffetRepository.save(buffet);
 	}
+
+
+	public boolean alreadyExist(Buffet buffet) {
+		return this.buffetRepository.existsByName(buffet.getName());
+	}
 		
 }

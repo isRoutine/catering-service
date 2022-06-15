@@ -33,8 +33,8 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter{
 			//chiunque (autenticato o no) puo' mandare richieste POST al punto di accesso
 			.antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
 			//solo gli utenti autenticati con ruolo admin possono accedere a risorse con path /admin/**
-			.antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
-			.antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
+			.antMatchers(HttpMethod.GET, "/**/add/**","/**/edit/**","/**/delete/**").hasAnyAuthority(ADMIN_ROLE)
+			.antMatchers(HttpMethod.POST, "/**/add/**","/**/edit/**","/**/delete/**").hasAnyAuthority(ADMIN_ROLE)
 			//.anyRequest().authenticated() // se io tolgo questo , non serve l'autenticazione per tutto il resto
 		
 			//login paragraph: qui definiamo come è gestita l'autenticazione

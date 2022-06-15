@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.model.Buffet;
 import com.example.demo.service.BuffetService;
 import com.example.demo.service.ChefService;
+import com.example.demo.validator.BuffetValidator;
 
 @Controller
 @RequestMapping("/buffet")
 public class BuffetController {
 	
-	@Autowired BuffetService buffetService;
+	@Autowired BuffetService   buffetService;
+	@Autowired BuffetValidator buffetValidator;
 	
 	@Autowired ChefService chefService;
 	
@@ -56,14 +58,24 @@ public class BuffetController {
 
 	// aggiunge al db un nuovo buffet
 	@PostMapping("/add/{idChef}")
-	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, 
-							@PathVariable("idChef") Long idChef,Model model, BindingResult bindingResult) {
+	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet buffet,BindingResult bindingResult, 
+							@PathVariable("idChef") Long idChef,Model model) {
 		
-		if(bindingResult.hasErrors()) 
+	// occhio, il parametro bindingresult va vicino al parametro da validare, 
+	// altrimenti non funziona (sta merda)
+		this.buffetValidator.validate(buffet, bindingResult);
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("buffet", buffet);
+			model.addAttribute("idChef",idChef);			
 			return BUFFET_DIR + "BuffetAdd";
-		
-		this.chefService.addBuffet(idChef,buffet);
-		return "redirect:/chef/" + idChef;	
+		}
+		else {
+			this.chefService.addBuffet(idChef,buffet);
+			System.out.println("arrivo qua 2");			
+			return "redirect:/chef/" + idChef;			
+		}
+	
 		
 
 	}

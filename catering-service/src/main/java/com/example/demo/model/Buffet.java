@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+
+
+
 
 @Entity
 public class Buffet {
@@ -22,11 +25,10 @@ public class Buffet {
 	private Long id;
 	
 	@NotBlank
-	@Column(unique = true)
 	private String name;
 	
-	
-	@Size(max = 255)
+	@NotBlank
+	@Max(5)
 	private String description;
 	
 	@ManyToOne
