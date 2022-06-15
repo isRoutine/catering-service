@@ -63,27 +63,30 @@ public class IngredientController {
 	
 	
 	// elimina dal db un ingredient selezionato tramite id
-	@GetMapping("/delete/{id}")
-	public String deleteIngredient(@PathVariable("id") Long id,Model model) {
+	@GetMapping("/delete/{id}/{buffetId}")
+	public String deleteIngredient(@PathVariable("id") Long id,
+							@PathVariable("buffetId") Long buffetId, Model model) {
 		this.ingredientService.deleteById(id);
-		model.addAttribute("ingredients", this.ingredientService.findAll());
-		return DISH_DIR + "IngredientList.html";
+		return "redirect:/buffet/" + buffetId;
 	}
 	
 	// mostra la form per l'edit di un ingredient selezionato tramite id
-	@GetMapping("/edit/form/{id}")
-	public String getEditForm(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/edit/{id}/{buffetId}")
+	public String getEditForm(@PathVariable("id") Long id,
+										@PathVariable("buffetId") Long buffetId, Model model) {
 		model.addAttribute("ingredient", this.ingredientService.findById(id));
+		model.addAttribute("buffetId", buffetId);
 		return DISH_DIR + "IngredientEdit";
 	}
 	
 	
 	// edita un ingredient nel db
-//	@PostMapping("/edit/{id}")
-//	public String editIngredient(@ModelAttribute("ingredient") Ingredient ingredient, Model model) {
-//		this.ingredientService.update(ingredient);
-//		model.addAttribute("ingredients", this.ingredientService.findAll());
-//		return DISH_DIR + "IngredientList";
-//	}	
+	@PostMapping("/edit/{id}/{buffetId}")
+	public String editIngredient(@ModelAttribute("ingredient") Ingredient ingredient, 
+								@PathVariable("buffetId") Long buffetId, Model model) {
+		
+		this.ingredientService.update(ingredient);
+		return "redirect:/buffet/" + buffetId;
+	}	
 	
 }

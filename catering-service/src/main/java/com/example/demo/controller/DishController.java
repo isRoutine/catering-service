@@ -83,7 +83,7 @@ public class DishController {
 	public String editDish(@ModelAttribute("dish") Dish dish,@PathVariable("idBuffet") Long idBuffet,
 											Model model) {
 		this.dishService.update(dish);
-		model.addAttribute("dishes", this.dishService.findAll());
+		//model.addAttribute("dishes", this.dishService.findAll());
 		return "redirect:/buffet/" + idBuffet;
 	}
 	

@@ -2,9 +2,12 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.Buffet;
-import com.example.demo.model.Chef;
 import com.example.demo.service.BuffetService;
 import com.example.demo.service.ChefService;
 
@@ -54,10 +56,16 @@ public class BuffetController {
 
 	// aggiunge al db un nuovo buffet
 	@PostMapping("/add/{idChef}")
-	public String addBuffet(@ModelAttribute("buffet") Buffet buffet, 
-							@PathVariable("idChef") Long idChef,Model model) {
+	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, 
+							@PathVariable("idChef") Long idChef,Model model, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) 
+			return BUFFET_DIR + "BuffetAdd";
+		
 		this.chefService.addBuffet(idChef,buffet);
-		return "redirect:/chef/" + idChef;
+		return "redirect:/chef/" + idChef;	
+		
+
 	}
 	
 	// elimina dal db un buffet selezionato tramite id

@@ -41,4 +41,14 @@ public class IngredientService {
 	public void deleteById(Long id) {
 		this.ingredientRepository.deleteById(id);
 	}
+
+	@Transactional
+	public void update(Ingredient ingredient) {
+		// TODO Auto-generated method stub
+		Ingredient foo = this.ingredientRepository.findById(ingredient.getId()).get();
+		foo.setName(ingredient.getName());
+		foo.setDescription(ingredient.getDescription());	
+		foo.setOrigin(ingredient.getOrigin());	
+		this.ingredientRepository.save(foo);
+	}
 }

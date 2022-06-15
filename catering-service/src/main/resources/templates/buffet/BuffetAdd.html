@@ -22,6 +22,7 @@
 				  <div class="mb-3">
 				    <label class="form-label">Nome</label>
 				    <input th:field="*{name}" type="text" required class="form-control">
+				    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 				  </div>
 				  <div class="mb-3">
 				    <label class="form-label">Descrizione</label>
@@ -34,12 +35,5 @@
 		
 		<div th:replace="fragments/base.html :: footer"></div>
 
-
-
-		<form th:action="@{'/buffet/add/'+ ${idChef}}" method="post" th:object="${buffet}">
-			<div>Name: <input type="text" th:field="*{name}"/></div>
-			<div>Description: <input type="text" th:field="*{description}"/></div>
-			<div><button type="submit">Submit</button></div>
-		</form>
 	</body>
 </html>
