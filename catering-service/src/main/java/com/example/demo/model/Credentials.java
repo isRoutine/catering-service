@@ -1,14 +1,14 @@
 package com.example.demo.model;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Credentials {
@@ -22,12 +22,9 @@ public class Credentials {
 	private Long id;
 	
 	@NotBlank
-	@Column (unique = true)
-	@Size (min = 3, max = 15)
 	private String username;
 	
 	@NotBlank
-	@Size (min = 8, max = 255)
 	private String password;
 	
 	private String ruolo;

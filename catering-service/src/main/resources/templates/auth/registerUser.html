@@ -19,6 +19,8 @@
 		<div class="d-flex container justify-content-center">
 			<div class="col-lg-6 card border border-primary" >
 				<form th:action="@{/register}" method="post" class="m-3">
+				  
+
 				  <div class="mb-3">
 				    <label class="form-label">Nome</label>
 				    <input th:field="${user.nome}" type="text" required class="form-control">
@@ -26,14 +28,17 @@
 				  <div class="mb-3">
 				    <label class="form-label">Cognome</label>
 				    <input th:field="${user.cognome}" type="text" required class="form-control">
+				  
 				  </div>
 				  <div class="mb-3">
 				    <label class="form-label">Username</label>
 				    <input th:field="${credentials.username}" type="text" required class="form-control">
+				  
 				  </div>
 				  <div class="mb-3">
 				    <label class="form-label">Password</label>
 				    <input th:field="${credentials.password}" type="password" required class="form-control">
+				  
 				  </div>
 				  <button type="submit" class="btn btn-primary">Sign Up</button>
 				</form>				

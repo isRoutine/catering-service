@@ -1,14 +1,10 @@
 package com.example.demo.controller;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.model.Buffet;
 import com.example.demo.service.BuffetService;
 import com.example.demo.service.ChefService;
 
@@ -16,12 +12,12 @@ import com.example.demo.service.ChefService;
 public class CateringController {
 	
 	@Autowired private BuffetService buffetService;
-	@Autowired private ChefService   ChefService;	
+	@Autowired private ChefService   chefService;	
 	
 	@GetMapping("/")
 	public String homepage(Model model) {
-		List<Buffet> buffets = this.buffetService.findAll();
-		Collections.shuffle(buffets);
+		model.addAttribute("chefs", this.chefService.lastInsertedChef());
+		model.addAttribute("buffets", this.buffetService.lastInsertedBuffet());
 		return "index";
 	}
 

@@ -62,4 +62,8 @@ public class ChefService {
 		buffet.setChef(chef);
 		this.chefRepository.save(chef);
 	}
+	
+	public List<Chef> lastInsertedChef(){
+		return this.chefRepository.findTop3ByOrderByIdDesc();
+	}
 }

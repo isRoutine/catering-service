@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,9 +31,9 @@ public class AuthenticationController {
 	
 
 	@PostMapping(value= "/register")
-	public String registerUser(@Valid @ModelAttribute("user") User user,
+	public String registerUser(@ModelAttribute("user") User user,
 								BindingResult userBindingResult, 
-							   @Valid @ModelAttribute("credentials") Credentials credentials,
+							    @ModelAttribute("credentials") Credentials credentials,
 							    BindingResult credentialsBindingResult,
 							    Model model) {
 		
@@ -43,12 +41,14 @@ public class AuthenticationController {
         //this.userValidator.validate(user, userBindingResult);
         //this.credentialsValidator.validate(credentials, credentialsBindingResult);
 
-		//if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
+//		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 			credentials.setUser(user);
 			credentialsService.saveCredentials(credentials);
-			return "index";
-		//}
-		//return "Authentication/registerForm";	
+			return "redirect:/";
+//		}
+//		model.addAttribute("user", user);
+//		model.addAttribute("credentials", credentials);		
+//		return "Authentication/registerForm";	
 	}
 	
 	
@@ -61,17 +61,17 @@ public class AuthenticationController {
 	@GetMapping("/default")
 	public String defaultAfterLogin(Model model) {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		if(credentials.getRuolo().equals(Credentials.ADMIN_ROLE)) {
-			return "index";
-		}
-		return "index";
+//		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+//		if(credentials.getRuolo().equals(Credentials.ADMIN_ROLE)) {
+//			return "redirect:/";
+//		}
+		return "redirect:/";
 
 	}
 	
 	@GetMapping("/logout")
 	public String logout(Model model) {
-		return "/";
+		return "redirect:/";
 	}
 	
 

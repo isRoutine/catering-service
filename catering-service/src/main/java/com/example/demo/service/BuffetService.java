@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Buffet;
+import com.example.demo.model.Chef;
 import com.example.demo.model.Dish;
 import com.example.demo.repository.BuffetRepository;
 
@@ -66,6 +67,10 @@ public class BuffetService {
 
 	public boolean alreadyExist(Buffet buffet) {
 		return this.buffetRepository.existsByName(buffet.getName());
+	}
+	
+	public List<Buffet> lastInsertedBuffet(){
+		return this.buffetRepository.findTop3ByOrderByIdDesc();
 	}
 		
 }

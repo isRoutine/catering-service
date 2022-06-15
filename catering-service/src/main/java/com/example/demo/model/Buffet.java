@@ -28,7 +28,7 @@ public class Buffet {
 	private String name;
 	
 	@NotBlank
-	@Max(5)
+	@Max(255)
 	private String description;
 	
 	@ManyToOne
