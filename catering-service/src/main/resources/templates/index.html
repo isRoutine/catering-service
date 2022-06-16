@@ -15,13 +15,18 @@
 	<body>
 
 		<div th:replace="fragments/base.html :: navbar"></div>
-		<div class="container d-flex justify-content-center">
-			<img src="/img/food.jpg" style="width:80%"  class="img-fluid rounded-2" alt="...">		
+		<div class="container d-flex justify-content-center align-items-center" style=" position: relative;">
+			<img src="/img/catering.jpeg" style="width:50%; opacity:0.4"  class="img-fluid rounded-2 flex-fill" alt="...">		
+				<div style="padding:20px; position: absolute; vertical-align:middle; text-align:center">
+					<h1 style="color: #2B2B2B">CateringService</h1>	
+					<h2 style="color: #2B2B2B">Gianluca Farinaccio, June 2022</h2>			
+				</div>
+
 		</div>
 		
-		<div class="container my-5 border-top border-bottom border-success">
+		<div class="container my-5 border card px-5 border-success border-3">
 			<div class=" d-flex row justify-content-center mt-5 mb-3">
-				<h5> Una breve selezione dei nostri chef</h5>
+				<h4 class="d-flex justify-content-center">Una breve selezione dei nostri Chef</h4>
 			</div>
 			<div class=" d-flex row justify-content-start m-1">
 				<div th:each="chef : ${chefs}" class="col-md-6 col-lg-4 d-flex justify-content-center my-1">
@@ -52,9 +57,9 @@
 		</div>
 		
 		
-		<div class="container my-5  border-bottom border-success">
-			<div class=" d-flex row justify-content-start mt-5 mb-3">
-				<h5> Una breve selezione dei nostri buffet</h5>
+		<div class="container my-5  card px-5 border border-success border-3">
+			<div class=" d-flex row justify-content-center mt-5 mb-3">
+				<h4 class="d-flex justify-content-center">Una breve selezione dei nostri buffet</h4>
 			</div>
 			<div class=" d-flex row justify-content-start m-1">
 				<div th:each="buffet : ${buffets}" class="col-md-6 col-lg-4 d-flex justify-content-center my-1">

@@ -9,4 +9,6 @@ L'obbiettivo del sistema è quello di consentire almeno l'esecuzione di 4 casi d
 >* inserimento di dati
 >* modifica di dati 
 
-* almeno due che abbiano come attore principale un <strong>utente generico
+* almeno due che abbiano come attore principale un <strong>utente generico</strong>
+
+Il sistema prevede 

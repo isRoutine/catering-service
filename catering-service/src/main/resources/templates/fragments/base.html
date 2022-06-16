@@ -15,9 +15,10 @@
 	
 	<body>
 		<div class="container" th:fragment="navbar">
-		  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom border-primary">
-<!-- 			    <a href="/" class="d-flex align-items-center justify-content-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"> -->
-			    <div class="badge bg-primary fs-3 fw-bold">CateringService</div>
+		  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom border-primary border-2">
+			<a href="/" class="d-flex align-items-center justify-content-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+			    	<div class="badge bg-success fs-3 fw-bold">CateringService</div>
+			    </a>
 			    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 			      <li><a href="/" class="nav-link px-4 ">Home</a></li>
 			      <li><a href="/" th:href = @{/buffet/all} class="nav-link px-4 link-dark">Buffet</a></li>
@@ -36,7 +37,7 @@
 		
 		<div class="container" th:fragment="footer">
 		  <footer class="py-3 my-4">
-		    <ul class="nav justify-content-center pb-3 mb-3">
+		    <ul class="nav justify-content-center pb-3 mb-3 border-bottom border-primary border-2">
 		      <li class="nav-item"><a href="/" class="nav-link px-2">Home</a></li>
 		      <li class="nav-item"><a href="/" th:href = @{/buffet/all}  class="nav-link px-2 text-muted">Buffet</a></li>
 		      <li class="nav-item"><a href="/" th:href = @{/chef/all} class="nav-link px-2 text-muted">Chef</a></li>

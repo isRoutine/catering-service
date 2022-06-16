@@ -22,21 +22,18 @@
 					<div class="card">
 						<img src="/img/chef.jpg" class="card-img-top" alt="...">
 			  			<div class="card-body">
-			   				 <h5 class="card-title" th:text="${chef.name}">Nome Chef</h5>			
+			   				 <h5 class="card-title" th:text="|${chef.name} ${chef.surname}|">Nome Chef</h5>	
+			   				 <div class="card-title" th:text="${chef.nationality}">Nazionalità Chef</div>		
 						</div>				
 					</div>
 				</div>	
 			</div>	
 		</div>
 		
-		<div class="container my-5 border-top">
-			<div class="row my-3 d-flex justify-content-start">
-				<h5>I buffet proposti dal nostro chef... </h5>
-			</div>
-			<div sec:authorize="hasAuthority('ADMIN')" class=" d-flex row-3 pb-3 m-3 justify-content-end border-bottom"> 
-				<a  th:href = "@{'/buffet/add/'+ ${chef.id}}" href="BuffetList.html"  class="btn btn-outline-primary">
-					Aggiungi Buffet
-				</a>	
+		<div class="container my-5 card">
+			<div class="row my-4 d-flex justify-content-start">
+				<h4 class="justify-content-center d-flex">I buffet proposti dal nostro chef </h4>
+				<h5 class="justify-content-center d-flex" th:text="|${chef.name} ${chef.surname}|">I buffet proposti dal nostro chef </h5>				
 			</div>
 			<div class=" d-flex row justify-content-start">
 				<div th:each="buffet : ${chef.buffets}" class="col-md-6 col-lg-4 d-flex justify-content-center">
@@ -66,7 +63,12 @@
 			  			</div>
 					</div> 			
 				</div>				
-			</div>		
+			</div>	
+			<div sec:authorize="hasAuthority('ADMIN')" class=" d-flex row-3 pb-3 m-3 justify-content-center"> 
+				<a  th:href = "@{'/buffet/add/'+ ${chef.id}}" href="BuffetList.html"  class="btn btn-outline-primary">
+					Aggiungi Buffet
+				</a>	
+			</div>	
 		</div>
 
 		<div th:replace="fragments/base.html :: footer"></div>
