@@ -18,6 +18,9 @@ Il sistema prevede un diverso funzionamento in base al tipo di utente.<br>
 > 2. Utente autenticato (generico):  funzionamento completo, è possibile visualizzare i dettagli di chef e buffet.<br>
 > 3. Utente autenticato (admin):  funzionamento completo , con possibilità di apportare modifiche al sistema ed ai suoi dati.<br>
 
+<img width="1101" alt="Screenshot 2022-06-16 at 17 00 36" src="https://user-images.githubusercontent.com/81380857/174099827-bf96a926-439a-4e10-8423-0080a7bf5237.png">
+
+
 Ogni utente **potrà accedere** al sistema tramite:
 > * Credenziali del proprio account, previa registrazione 
 > * Account Google
