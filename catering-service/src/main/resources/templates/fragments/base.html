@@ -15,19 +15,19 @@
 	
 	<body>
 		<div class="container" th:fragment="navbar">
-		  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-			    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-			      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+		  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom border-primary">
+			    <a href="/" class="d-flex align-items-center justify-content-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+			    	<div class="badge bg-primary fs-3 fw-bold">CateringService</div>
 			    </a>
 			    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			      <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-			      <li><a href="/" th:href = @{/buffet/all} class="nav-link px-2 link-dark">Buffet</a></li>
-			      <li><a href="#" th:href = @{/chef/all} class="nav-link px-2 link-dark">Chef</a></li>
+			      <li><a href="/" class="nav-link px-4 ">Home</a></li>
+			      <li><a href="/" th:href = @{/buffet/all} class="nav-link px-4 link-dark">Buffet</a></li>
+			      <li><a href="/" th:href = @{/chef/all} class="nav-link px-4 link-dark">Chef</a></li>
 			    </ul>
 			
 			    <div class="col-md-3 text-end">
 			      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-outline-primary me-2" href="/" th:href = @{/login}>Login</a>
-			      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" href="/" th:href = @{/register}>Sign-up</a>
+			      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary " href="/" th:href = @{/register}>Sign-up</a>
 			      <a sec:authorize="isAuthenticated()" type="button" class="btn btn-primary" href="/" th:href = @{/logout}>Logout</a>
 <!-- 			      <span sec:authorize="isAuthenticated()" th:text="|Logged as: ${#authentication.getPrincipal().getUsername()}|"></span>		    	 -->
 			    
@@ -37,8 +37,8 @@
 		
 		<div class="container" th:fragment="footer">
 		  <footer class="py-3 my-4">
-		    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-		      <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+		    <ul class="nav justify-content-center pb-3 mb-3">
+		      <li class="nav-item"><a href="/" class="nav-link px-2">Home</a></li>
 		      <li class="nav-item"><a href="/" th:href = @{/buffet/all}  class="nav-link px-2 text-muted">Buffet</a></li>
 		      <li class="nav-item"><a href="/" th:href = @{/chef/all} class="nav-link px-2 text-muted">Chef</a></li>
 		    </ul>
