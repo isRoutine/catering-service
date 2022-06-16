@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.model.Credentials;
 import com.example.demo.model.User;
 import com.example.demo.service.CredentialsService;
+import com.example.demo.validator.CredentialsValidator;
 
 @Controller
 public class AuthenticationController {
 
-	@Autowired
-	private CredentialsService credentialsService;
+	@Autowired private CredentialsService credentialsService;
+	@Autowired private CredentialsValidator credentialsValidator;
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String showRegisterForm(Model model) {
@@ -31,24 +34,24 @@ public class AuthenticationController {
 	
 
 	@PostMapping(value= "/register")
-	public String registerUser(@ModelAttribute("user") User user,
+	public String registerUser(@Valid @ModelAttribute("user") User user,
 								BindingResult userBindingResult, 
-							    @ModelAttribute("credentials") Credentials credentials,
+							    @Valid @ModelAttribute("credentials") Credentials credentials,
 							    BindingResult credentialsBindingResult,
 							    Model model) {
 		
         // validazione user e credenziali
         //this.userValidator.validate(user, userBindingResult);
-        //this.credentialsValidator.validate(credentials, credentialsBindingResult);
+        this.credentialsValidator.validate(credentials, credentialsBindingResult);
 
-//		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
+		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors() ) {
 			credentials.setUser(user);
 			credentialsService.saveCredentials(credentials);
 			return "redirect:/";
-//		}
-//		model.addAttribute("user", user);
-//		model.addAttribute("credentials", credentials);		
-//		return "Authentication/registerForm";	
+		}
+		model.addAttribute("user", user);
+		model.addAttribute("credentials", credentials);		
+		return "auth/registerUser";	
 	}
 	
 	

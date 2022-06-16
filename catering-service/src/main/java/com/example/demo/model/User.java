@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -18,9 +19,11 @@ public class User {
 	private Long id;
 	
 	@NotBlank
+	@Size(min=1)
 	private String nome;
 	
 	@NotBlank
+	@Size(min=1)
 	private String cognome;
 	
 	@OneToOne(fetch = FetchType.EAGER, mappedBy="user", cascade = CascadeType.ALL)

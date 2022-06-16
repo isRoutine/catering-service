@@ -29,12 +29,9 @@
 			      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-outline-primary me-2" href="/" th:href = @{/login}>Login</a>
 			      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" href="/" th:href = @{/register}>Sign-up</a>
 			      <a sec:authorize="isAuthenticated()" type="button" class="btn btn-primary" href="/" th:href = @{/logout}>Logout</a>
+			      <span sec:authorize="isAuthenticated()" th:text="|Logged as: ${#authentication.getPrincipal().getUsername()}|"></span>		    	
+			    
 			    </div>
-<!-- 		    <div class="row d-flex justify-content-end m-2"> -->
-<!-- 		    	<div class="col d-flex justify-content-center"> -->
-<!-- 		      		<span sec:authorize="isAuthenticated()" th:text="|Logged as: ${#authentication.getPrincipal().getUsername()}|"></span>		    	 -->
-<!-- 		    	</div> -->
-<!-- 		    </div> -->
 		  </header>
 		</div>
 		

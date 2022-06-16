@@ -9,5 +9,6 @@ import com.example.demo.model.Credentials;
 public interface CredentialsRepository extends CrudRepository<Credentials, Long> {
 	
 	public Optional <Credentials> findByUsername(String username);
+	boolean existsByUsername(String username);
 
 }

@@ -20,7 +20,7 @@
 			<div class="col-lg-6 card border border-primary" >
 				<form th:action="@{'/buffet/add/' + ${idChef}}" method="post"  th:object="${buffet}" class="m-3">
 				 <div th:if="${#fields.hasGlobalErrors()}">
-				 	<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+				 	<p class="badge text-bg-danger my-2" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
 				 </div>				  
 				  
 				  <div class="mb-3">
