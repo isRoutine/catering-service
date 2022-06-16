@@ -66,4 +66,10 @@ public class ChefService {
 	public List<Chef> lastInsertedChef(){
 		return this.chefRepository.findTop3ByOrderByIdDesc();
 	}
+
+
+	public boolean alreadyExist(Chef chef) {
+		// TODO Auto-generated method stub
+		return this.chefRepository.existsByNameAndSurname(chef.getName(), chef.getSurname());
+	}
 }

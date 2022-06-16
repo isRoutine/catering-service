@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Chef {
@@ -21,6 +21,7 @@ public class Chef {
 	
 	private String surname;
 	
+	@Size(min=1, max=30)
 	private String nationality;
 
 	@OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)

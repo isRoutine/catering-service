@@ -11,4 +11,6 @@ public interface ChefRepository extends CrudRepository<Chef, Long> {
 	
 	List<Chef> findTop3ByOrderByIdDesc();
 
+	boolean existsByNameAndSurname(String name, String surname);
+
 }
