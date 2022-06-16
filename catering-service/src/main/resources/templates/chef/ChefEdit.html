@@ -21,6 +21,9 @@
 		<div class="d-flex container justify-content-center">
 			<div class="col-lg-6 card border border-primary" >
 				<form th:action="@{'/chef/edit/'+ ${chef.id}}" method="post"  th:object="${chef}" class="m-3">
+				 <div th:if="${#fields.hasGlobalErrors()}">
+				 	<p class="badge text-bg-danger my-2" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+				 </div>					  
 				  <div class="mb-3">
 				    <label class="form-label">Nome</label>
 				    <input th:field="*{name}" type="text" required class="form-control">
@@ -33,7 +36,9 @@
 				    <label class="form-label">Nazionalità</label>
 				    <input th:field="*{nationality}" type="text" required class="form-control">
 				  </div>
+				  <a  th:href="@{/chef/all}" href="/" class="btn btn-danger">Annulla</a>	
 				  <button type="submit" class="btn btn-primary">Modifica Buffet</button>
+			  
 				</form>				
 			</div>
 		</div>		

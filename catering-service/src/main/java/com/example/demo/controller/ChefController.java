@@ -80,10 +80,13 @@ public class ChefController {
 	
 	// edita un chef nel db
 	@PostMapping("/edit/{id}")
-	public String editChef(@ModelAttribute("chef") Chef chef, Model model) {
-		this.chefService.update(chef);
-		//model.addAttribute("chefs", this.chefService.findAll());
-		return "redirect:/chef/all";
+	public String editChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
+		this.chefValidator.validate(chef, bindingResult);	
+		if(!bindingResult.hasErrors()) {		
+			this.chefService.update(chef);
+			return "redirect:/chef/all";
+		}
+		return CHEF_DIR + "ChefEdit";
 	}
 	
 }

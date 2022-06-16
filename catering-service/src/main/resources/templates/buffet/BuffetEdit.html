@@ -19,14 +19,24 @@
 		<div class="d-flex container justify-content-center">
 			<div class="col-lg-6 card border border-primary" >
 				<form th:action="@{'/buffet/edit/'+ ${buffet.id}}" method="post"  th:object="${buffet}" class="m-3">
+				 
+				 <div th:if="${#fields.hasGlobalErrors()}">
+				 	<p class="badge text-bg-danger my-2" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+				 </div>	
+				 				  
 				  <div class="mb-3">
 				    <label class="form-label">Nome Buffet</label>
 				    <input th:field="*{name}" type="text" required class="form-control">
+    				<div class="badge text-bg-danger my-2" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+				    
 				  </div>
 				  <div class="mb-3">
 				    <label class="form-label">Descrizione Buffet</label>
 				    <input th:field="*{description}" type="text" required class="form-control">
+    				<div class="badge text-bg-danger my-2" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+				    
 				  </div>
+				  <a  th:href="@{/buffet/all}" href="/" class="btn btn-danger">Annulla</a>
 				  <button type="submit" class="btn btn-primary">Modifica Buffet</button>
 				</form>				
 			</div>

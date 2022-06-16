@@ -99,10 +99,16 @@ public class BuffetController {
 	
 	// edita un buffet nel db
 	@PostMapping("/edit/{id}")
-	public String editBuffet(@ModelAttribute("buffet") Buffet buffet, Model model) {
-		this.buffetService.update(buffet);
+	public String editBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult ,Model model) {
+		
+		this.buffetValidator.validate(buffet, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.buffetService.update(buffet);			
+			return "redirect:/buffet/" + buffet.getId();		
+		}
+		return BUFFET_DIR + "BuffetEdit";
 		//model.addAttribute("buffets", this.buffetService.findAll());
-		return "redirect:/buffet/" + buffet.getId();
+
 	}
 	
 }
