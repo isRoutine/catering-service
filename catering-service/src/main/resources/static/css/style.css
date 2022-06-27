@@ -1,4 +1,19 @@
 body{
-	background-color: gray;
+	background-color: #34495E;
 }
 
+.gfnav{
+	background-color: white;	
+}
+
+.gffooter{
+	background-color: white;	
+}
+
+.gfbadge{
+	background-color: white;
+}
+
+.gftext{
+	color: black;
+}

@@ -1,23 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-	  	<!-- CSS only -->
-  		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
-  			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  
-  		<!-- JavaScript Bundle with Popper -->
-  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
-  				integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-		
-		<meta charset="UTF-8" />
-		<title>Catering Service - Aggiungi Buffet</title>	
-	</head>
+	<head th:replace="fragments/base.html :: headerfiles(title='Catering Service - Aggiungi Buffet')"></head>
+
 	<body>
 
 		<div th:replace="fragments/base.html :: navbar"></div>
 		
 		<div class="d-flex container justify-content-center">
-			<div class="col-lg-6 card border border-primary" >
+			<div class="col card border border-primary" >
 				<form th:action="@{'/buffet/add/' + ${idChef}}" method="post"  th:object="${buffet}" class="m-3">
 				 <div th:if="${#fields.hasGlobalErrors()}">
 				 	<p class="badge text-bg-danger my-2" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
