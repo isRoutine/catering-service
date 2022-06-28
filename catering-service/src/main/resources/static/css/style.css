@@ -17,3 +17,8 @@ body{
 .gftext{
 	color: black;
 }
+
+.chefbg{
+ background-image: url("/img/chefs.jpg");
+ background-repeat: no-repeat;
+}

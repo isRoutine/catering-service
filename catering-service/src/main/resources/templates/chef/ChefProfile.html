@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-	  	<!-- CSS only -->
-  		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
-  			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  
-  		<!-- JavaScript Bundle with Popper -->
-  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
-  				integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-		
-		<meta charset="UTF-8" />
-		<title>Catering Service - Dettaglio Chef</title>	
-	</head>
+	<head th:replace="fragments/base.html :: headerfiles(title='Catering Service - Dettaglio chef')"></head>
 	<body>
 
 		<div th:replace="fragments/base.html :: navbar"></div>
@@ -19,8 +8,8 @@
 		<div class="container">
 			<div class=" d-flex row justify-content-center m-1">
 				<div class="col-md-4 d-flex justify-content-center my-1">
-					<div class="card">
-						<img src="/img/chef.jpg" class="card-img-top" alt="...">
+					<div class="card shadow">
+						<img src="/img/chef.jpg" class="card-img-top container d-flex justify-content-center" style="width:70%" alt="...">
 			  			<div class="card-body">
 			   				 <h5 class="card-title" th:text="|${chef.name} ${chef.surname}|">Nome Chef</h5>	
 			   				 <div class="card-title" th:text="${chef.nationality}">Nazionalità Chef</div>		
@@ -29,32 +18,32 @@
 				</div>	
 			</div>	
 		</div>
+				
 		
-		<div class="container my-5 card">
+		<div class="container my-4 card shadow">
 			<div class="row my-4 d-flex justify-content-start">
-				<h4 class="justify-content-center d-flex">I buffet proposti dal nostro chef </h4>
-				<h5 class="justify-content-center d-flex" th:text="|${chef.name} ${chef.surname}|">I buffet proposti dal nostro chef </h5>				
+				<h4 class="justify-content-center d-flex ">I buffet proposti dal nostro chef </h4>
 			</div>
 			<div class=" d-flex row justify-content-start">
 				<div th:each="buffet : ${chef.buffets}" class="col-md-6 col-lg-4 d-flex justify-content-center">
-					<div class="card  my-2">
+					<div class="card  my-2 shadow">
 						<img src="/img/food.jpg" class="card-img-top" alt="...">
 			  			<div class="card-body">
 			   				 <h5 class="card-title" th:text="${buffet.name}">Buffet 1</h5>
 			    			 <p class="card-text" th:text="${buffet.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 			    			 <div class="container">
 			    			 	<div class="row d-flex justify-content-center px-3 my-1">
-			    					<a sec:authorize="isAuthenticated()" href="BuffetList.html" th:href = "@{'/buffet/' + ${buffet.id}}" class="btn btn-primary">
+			    					<a sec:authorize="isAuthenticated()" href="BuffetList.html" th:href = "@{'/buffet/' + ${buffet.id}}" class="my-2 shadow-sm btn btn-primary">
 			    						Visualizza Dettagli
 			    					</a>			    					
 			    			 	</div>		    			 	
 			    			 	<div class="row d-flex justify-content-center px-3 my-1">
-			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/edit/' + ${buffet.id}}" class="btn btn-outline-success">
+			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/edit/' + ${buffet.id}}" class="mb-2 shadow-s btn btn-outline-success">
 			    						Modifica
 			    					</a>			    					
 			    			 	</div>	
 			    			 	<div class="row d-flex justify-content-center px-3 my-1">
-			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/delete/' + ${buffet.id}}" class="btn btn-outline-danger">
+			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/delete/' + ${buffet.id}}" class="mb-2 shadow-sm btn btn-outline-danger">
 			    						Elimina
 			    					</a>			    					
 			    			 	</div>				    			 
@@ -64,9 +53,9 @@
 					</div> 			
 				</div>				
 			</div>	
-			<div sec:authorize="hasAuthority('ADMIN')" class=" d-flex row-3 pb-3 m-3 justify-content-center"> 
-				<a  th:href = "@{'/buffet/add/'+ ${chef.id}}" href="BuffetList.html"  class="btn btn-outline-primary">
-					Aggiungi Buffet
+			<div sec:authorize="hasAuthority('ADMIN')" class=" d-flex row-3 pb-3 mt-5 mb-3 justify-content-center"> 
+				<a  th:href = "@{'/buffet/add/'+ ${chef.id}}" href="BuffetList.html"  class="shadow btn btn-outline-primary">
+					+ Aggiungi Buffet
 				</a>	
 			</div>	
 		</div>
