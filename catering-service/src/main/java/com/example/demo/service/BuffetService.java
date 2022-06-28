@@ -73,4 +73,8 @@ public class BuffetService {
 		return this.buffetRepository.findTop3ByOrderByIdDesc();
 	}
 		
+	public Buffet findByNameAndChef(String name, Chef chef) {
+		return this.buffetRepository.findByNameAndChef(name, chef);
+	}
+	
 }

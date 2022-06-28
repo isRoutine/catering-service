@@ -84,7 +84,7 @@ public class BuffetController {
 	@GetMapping("/delete/{id}")
 	public String deleteBuffet(@PathVariable("id") Long id,Model model) {
 		Long idChef = this.buffetService.findById(id).getChef().getId();
-		Buffet buffet = this.buffetService.findById(id);
+		//Buffet buffet = this.buffetService.findById(id);
 		this.buffetService.deleteById(id);
 		return "redirect:/chef/" + idChef;
 	}
@@ -101,7 +101,7 @@ public class BuffetController {
 	@PostMapping("/edit/{id}")
 	public String editBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult ,Model model) {
 		
-		this.buffetValidator.validate(buffet, bindingResult);
+		//this.buffetValidator.validate(buffet, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.buffetService.update(buffet);			
 			return "redirect:/buffet/" + buffet.getId();		
