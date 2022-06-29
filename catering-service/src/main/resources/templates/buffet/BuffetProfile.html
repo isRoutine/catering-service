@@ -13,10 +13,12 @@
 					<h4 th:text="|${buffet.description}|" style="color: white"></h4>	
 				</div>
 		</div>		
-		
-		
+				
 		<div class="container px-0 mt-4 shadow">
+			<a sec:authorize="hasAuthority('ADMIN')"  th:href="@{'/chef/' +${buffet.chef.id}}"href="/" class="mx-1 shadow-sm btn btn-primary">Visualizza Chef</a>		
+
 			<div class=" d-flex row justify-content-between m-1">
+				
 				<div class="col d-flex justify-content-center my-1 px-0">
 					<div class="card flex-grow-1">
 			  			<div class="card-body p-4">
