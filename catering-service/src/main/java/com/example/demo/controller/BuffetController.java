@@ -28,7 +28,7 @@ public class BuffetController {
 	
 	@Autowired ChefService chefService;
 	
-	public static final String BUFFET_DIR = "/buffet/";
+	public static final String BUFFET_DIR = "buffet/";
 	
 	// mostra tutti i buffet nel db
 	@GetMapping("/all")

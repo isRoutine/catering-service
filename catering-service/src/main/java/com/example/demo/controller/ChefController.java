@@ -26,7 +26,7 @@ public class ChefController {
 
 	@Autowired private ChefValidator chefValidator;
 	
-	private static final String CHEF_DIR = "/chef/";
+	private static final String CHEF_DIR = "chef/";
 
 	@GetMapping("/all")
 	public String getChefList(Model model) {

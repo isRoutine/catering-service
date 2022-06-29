@@ -24,7 +24,7 @@ public class DishController {
 
 	@Autowired private BuffetService buffetService;
 	
-	private static final String DISH_DIR = "/dish/";
+	private static final String DISH_DIR = "dish/";
 
 	@GetMapping("/all")
 	public String getDishList(Model model) {

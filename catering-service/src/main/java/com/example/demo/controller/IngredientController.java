@@ -19,7 +19,7 @@ import com.example.demo.service.IngredientService;
 @RequestMapping("/ingredient")
 public class IngredientController {
 	
-	public static final String INGREDIENT_DIR = "/ingredient/";
+	public static final String INGREDIENT_DIR = "ingredient/";
 
 	@Autowired private IngredientService ingredientService;
 	
